@@ -2,7 +2,7 @@
     appDir: "../site",
     baseUrl: "script/",
     dir: "../build",
-    //optimize: "none",
+    optimize: "none",
     
     modules: [
         { name: "lib/require-jquery" },
