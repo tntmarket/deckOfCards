@@ -9,20 +9,22 @@ function (express, sio) {
     
     //set up http server + serve index view
     var app = express.createServer();
-    configure = function(path) {
+    conf = function(path) {
+        console.log(path);
         app.use(express.logger());
         app.use(express.static(path));
         app.use(express.favicon(path + '/favicon.ico'));
         app.set('views', path);
     }
     app.configure('development', function() {
-        configure(__dirname + '/../site');
+        console.log('dev');
+        conf(__dirname + '/../site');
     });
     
     app.configure('production', function() {
-        configure(__dirname + '/../build');
+        console.log('prod');
+        conf(__dirname + '/../build');
     });
-    
     
     app.listen(port, function() {
         console.log('on port ' + port);
