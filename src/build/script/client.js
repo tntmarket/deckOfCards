@@ -1,1 +1,1 @@
-$(function(){var a=io.connect("http://localhost");a.emit("drawCard"),a.on("getCard",function(a){console.log(a)}),a.on("spawnDeck",function(a){console.log(a)})}),define("client",function(){})
+$(function(){var a=io.connect("http://localhost"),b,c;a.emit("drawCard"),a.on("getCard",function(a){b=a,console.log(a)}),a.on("spawnDeck",function(a){c=a,console.log(a)})}),define("client",function(){})
