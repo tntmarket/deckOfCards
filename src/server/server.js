@@ -23,7 +23,7 @@ function (express, sio) {
     
     app.configure('production', function() {
         console.log('prod');
-        conf(__dirname + '/../build');
+        conf(__dirname + '/../site');
     });
     
     app.listen(port, function() {
@@ -38,9 +38,11 @@ function (express, sio) {
     //set up http server + serve index view
     var io = sio.listen(app);
     
+    /*
     io.configure('production', function() {
-        io.set('browser client minification', true);
-    });
+            io.set('browser client minification', true);
+        });*/
+    
     
     io.sockets.on('connection', function (socket) {
     /*  socket.emit('toClient', { msg: 'hello client, from the server' });
