@@ -9,13 +9,20 @@ function (express, sio) {
     
     //set up http server + serve index view
     var app = express.createServer();
-    app.configure(function() {
-        var staticPath = __dirname + '/../site';
+    configure = function(path) {
         app.use(express.logger());
-        app.use(express.static(staticPath));
-        app.use(express.favicon(staticPath + '/favicon.ico'));
-        app.set('views', staticPath);
+        app.use(express.static(path));
+        app.use(express.favicon(path + '/favicon.ico'));
+        app.set('views', path);
+    }
+    app.configure('development', function() {
+        configure(__dirname + '/../site');
     });
+    
+    app.configure('production', function() {
+        configure(__dirname + '/../build');
+    });
+    
     
     app.listen(port, function() {
         console.log('on port ' + port);
