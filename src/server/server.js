@@ -23,7 +23,7 @@ function (express, sio) {
     
     app.configure('production', function() {
         console.log('prod');
-        conf(__dirname + '/../site');
+        conf(__dirname + '/../build');
     });
     
     app.listen(port, function() {
@@ -38,10 +38,14 @@ function (express, sio) {
     //set up http server + serve index view
     var io = sio.listen(app);
     
-    /*
     io.configure('production', function() {
-            io.set('browser client minification', true);
-        });*/
+        io.set('browser client minification', true);
+    });
+    
+    io.configure(function() {
+        io.set("transports", ["xhr-polling"]); 
+        io.set("polling duration", 10); 
+    });
     
     
     io.sockets.on('connection', function (socket) {
