@@ -1,0 +1,1 @@
+$(function(){var a=io.connect("http://localhost");a.emit("drawCard"),a.on("getCard",function(a){console.log(a)}),a.on("spawnDeck",function(a){console.log(a)})}),define("client",function(){})

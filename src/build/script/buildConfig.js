@@ -1,0 +1,1 @@
+({appDir:"../",baseUrl:"script/",dir:"../../build",modules:[{name:"lib/require-jquery"},{name:"client"}]})
