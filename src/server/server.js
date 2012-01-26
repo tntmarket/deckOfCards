@@ -39,7 +39,10 @@ function (express, sio) {
     var io = sio.listen(app);
     
     io.configure('production', function() {
-        io.set('browser client minification', true);
+        io.enable('browser client minification');
+        io.enable('browser client etag');
+        io.enable('browser client gzip');
+        io.set('log level', 1);
     });
     
     io.configure(function() {

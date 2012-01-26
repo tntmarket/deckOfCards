@@ -1,5 +1,5 @@
 $(function() {
-    var socket = io.connect('http://localhost');
+    var socket = io.connect( $(location).attr('origin') );
     var card, deck;
     
     $('#main').click(function() {
